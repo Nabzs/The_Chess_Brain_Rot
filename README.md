@@ -1,6 +1,6 @@
 # Chess Brainrot
 
-Jeu d'echecs probabiliste en C++17 avec SFML 2.6 et TGUI 1.x. Chaque piece possede des mecaniques aleatoires basees sur 7 distributions de probabilite. Les pieces sont representees par des images brainrot et chaque action a son propre son.
+Jeu d'echecs probabiliste en C++17 avec SFML 2.6 et TGUI 1.x. Chaque piece possede des mecaniques aleatoires basees sur 8 distributions de probabilite. Les pieces sont representees par des images brainrot et chaque action a son propre son.
 
 ## Technologies
 
@@ -81,12 +81,13 @@ proba/
 - **6 sons par piece** : chaque type de piece fait un bruit different au deplacement
 - **8 sons d'evenements** : explosion, tours jumelles, fatigue, panique du roi, expansion, promotion, victoire, capture
 
-## Les 7 distributions de probabilite
+## Les 8 distributions de probabilite
 
 1. **Uniforme** : permutations initiales du plateau
 2. **Poisson (lambda=4)** : countdown d'explosion des fous
 3. **Normale / Box-Muller** : couleur des pieces (niveaux de gris)
 4. **Erlang (k=2)** : duree de fatigue
-5. **Bernoulli (p=0.55)** : roi nerveux
+5. **Bernoulli (p=0.55 roi, p variable expansion)** : roi nerveux + expansion du plateau
 6. **Geometrique (p=0.05)** : tours jumelles
-7. **Bernoulli (p variable)** : expansion du plateau
+7. **Exponentielle (lambda=0.03)** : meteore aleatoire, proba croissante avec le temps
+8. **Binomiale (n=3, p=0.4)** : boucliers gagnes apres une capture (0 a 3)

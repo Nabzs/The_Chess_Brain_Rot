@@ -18,5 +18,7 @@ void                             deselectPiece(SelectedPiece& selected);
 std::vector<std::pair<int, int>> getValidMovesForSelected(const Board& board, const SelectedPiece& selectedPiece);
 void                             handlePawnPromotion(Board& board, tgui::Gui& gui);
 void                             resetGame(Board& board);
+void                             tryMeteorStrike(Board& board);
+int                              drawBinomial(int n, float p);
 
 #endif // CHESS_CONTROLLER_HPP

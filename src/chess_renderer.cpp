@@ -214,6 +214,18 @@ void renderChessBoard(Board& chessBoard, sf::RenderWindow& window, tgui::Gui& gu
                     fatigueRect.setFillColor(grayOverlay);
                     window.draw(fatigueRect);
                 }
+
+                // Shield overlay (cyan border)
+                if (p.shield > 0)
+                {
+                    sf::RectangleShape shieldRect(sf::Vector2f(tileSize - 4, tileSize - 4));
+                    shieldRect.setPosition(x + 2, y + 2);
+                    shieldRect.setFillColor(sf::Color::Transparent);
+                    shieldRect.setOutlineThickness(3.0f);
+                    int alpha = std::min(80 + p.shield * 60, 255);
+                    shieldRect.setOutlineColor(sf::Color(0, 220, 255, alpha));
+                    window.draw(shieldRect);
+                }
             }
         }
     }

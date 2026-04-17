@@ -11,15 +11,15 @@ struct Piece {
     int explosionCountdown = -1;
     int fatigueRemaining = 0;
     bool justMovedTwoSquares = false;
+    int shield = 0;
 
     Piece(std::string t = "", bool white = true)
         : type(t), isWhite(white) {}
-        float r = 1.0f;
-float g = 1.0f;
-float b = 1.0f;
-bool colorInitialized = false;
 
-
+    float r = 1.0f;
+    float g = 1.0f;
+    float b = 1.0f;
+    bool colorInitialized = false;
 };
 
 

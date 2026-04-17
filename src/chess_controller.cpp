@@ -8,6 +8,59 @@
 
 int turnCount = 0;
 
+// Binomiale(n, p) : nombre de succes parmi n essais de Bernoulli(p)
+int drawBinomial(int n, float p)
+{
+    int successes = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        if (RAND() < p)
+            successes++;
+    }
+    return successes;
+}
+
+// Exponentielle : proba cumulative P(X <= t) = 1 - e^(-lambda * t)
+void tryMeteorStrike(Board& board)
+{
+    float lambda = 0.03f;
+    float prob = 1.0f - exp(-lambda * turnCount);
+    if (RAND() >= prob)
+        return;
+
+    auto& grid = board.getBoard();
+    int numRows = grid.size();
+    int numCols = grid[0].size();
+
+    // Collecter toutes les pieces (sauf les rois)
+    std::vector<std::pair<int, int>> targets;
+    for (int r = 0; r < numRows; ++r)
+        for (int c = 0; c < numCols; ++c)
+            if (!grid[r][c].type.empty() && grid[r][c].type != "K")
+                targets.emplace_back(r, c);
+
+    if (targets.empty())
+        return;
+
+    auto [r, c] = targets[randInt(targets.size())];
+    Piece& target = grid[r][c];
+
+    if (target.shield > 0)
+    {
+        target.shield--;
+        std::cout << "Skibidi Meteor! Mais le Bouclier Sigma a protege la piece! Boucliers restants: "
+                  << target.shield << std::endl;
+        playEventSound("capture");
+    }
+    else
+    {
+        std::cout << "SKIBIDI METEOR! Une piece " << (target.isWhite ? "blanche" : "noire")
+                  << " (" << target.type << ") a ete frappee par un meteore de l'Ohio!" << std::endl;
+        grid[r][c] = Piece();
+        playEventSound("explosion");
+    }
+}
+
 struct PendingPromotion {
     bool active = false;
     int  row;
@@ -277,8 +330,23 @@ bool movePiece(Board& board, SelectedPiece& selected, int newRow, int newCol)
         }
 
         int savedID = selectedPieceRef.uniqueID;
-        bool wasCapture = !board.getBoard()[newRow][newCol].type.empty();
         std::string movingType = selectedPieceRef.type;
+
+        // Bouclier Sigma : la piece cible absorbe le coup
+        Piece& targetPiece = board.getBoard()[newRow][newCol];
+        if (!targetPiece.type.empty() && targetPiece.shield > 0)
+        {
+            targetPiece.shield--;
+            std::cout << "Bouclier Sigma! La piece est protegee! Boucliers restants: "
+                      << targetPiece.shield << std::endl;
+            playEventSound("capture");
+            selected.isSelected = false;
+            isWhiteTurn = !isWhiteTurn;
+            turnCount++;
+            return true;
+        }
+
+        bool wasCapture = !board.getBoard()[newRow][newCol].type.empty();
 
         Piece moved                                  = std::move(selectedPieceRef);
         board.getBoard()[selected.row][selected.col] = Piece();
@@ -291,7 +359,17 @@ bool movePiece(Board& board, SelectedPiece& selected, int newRow, int newCol)
         // Son de deplacement (par type de piece) + son de capture
         playMoveSound(movingType);
         if (wasCapture)
+        {
             playEventSound("capture");
+            // Bouclier Sigma : Binomiale(3, 0.4) boucliers gagnes apres capture
+            int shields = drawBinomial(3, 0.4f);
+            if (shields > 0)
+            {
+                board.getBoard()[newRow][newCol].shield += shields;
+                std::cout << "Bouclier Sigma! La piece gagne " << shields
+                          << " bouclier(s) apres cette capture gyatt!" << std::endl;
+            }
+        }
 
         bool wasSameAsLast = lastMovedPiece.active && lastMovedPiece.uniqueID == movedPiece.uniqueID;
         lastMovedPiece     = {newRow, newCol, movedPiece.isWhite, true, movedPiece.uniqueID};
@@ -366,6 +444,8 @@ bool movePiece(Board& board, SelectedPiece& selected, int newRow, int newCol)
         tryNervousKingMove(board, isWhiteTurn);
         checkTwinTowers(board);
         tryExpandBoard(board);
+        tryMeteorStrike(board);
+        checkVictory(board, isWhiteTurn);
 
         turnCount++;
 
