@@ -44,6 +44,8 @@ Lancer `bin/ChessBrainrot.exe`. Le jeu se lance en plein ecran.
 |-----------|-------------|-----|
 | Fatigue | Meme piece bougee 2x de suite = bloquee 1-4 tours | Erlang (k=2) |
 | Expansion | Le plateau grandit d'une colonne, proba croissante avec le temps | Bernoulli (p variable) |
+| Skibidi Meteor | Un meteore tombe sur une piece aleatoire (sauf roi), proba croissante | Exponentielle (lambda=0.03) |
+| Bouclier Sigma | Apres une capture, la piece gagne 0 a 3 boucliers qui bloquent les attaques | Binomiale (n=3, p=0.4) |
 | Couleur des pieces | Chaque piece a une teinte unique en niveaux de gris | Normale / Box-Muller |
 | Positions initiales | Le plateau demarre avec des permutations aleatoires | Uniforme |
 
@@ -83,11 +85,13 @@ proba/
 
 ## Les 8 distributions de probabilite
 
-1. **Uniforme** : permutations initiales du plateau
-2. **Poisson (lambda=4)** : countdown d'explosion des fous
-3. **Normale / Box-Muller** : couleur des pieces (niveaux de gris)
-4. **Erlang (k=2)** : duree de fatigue
-5. **Bernoulli (p=0.55 roi, p variable expansion)** : roi nerveux + expansion du plateau
-6. **Geometrique (p=0.05)** : tours jumelles
-7. **Exponentielle (lambda=0.03)** : meteore aleatoire, proba croissante avec le temps
-8. **Binomiale (n=3, p=0.4)** : boucliers gagnes apres une capture (0 a 3)
+| # | Distribution | Parametre(s) | Utilisation | Fichier |
+|---|-------------|--------------|-------------|---------|
+| 1 | Uniforme | U(0,1) et U(0,n-1) | Permutations initiales, choix aleatoires | chess_renderer.cpp |
+| 2 | Poisson | lambda=4 | Countdown d'explosion des fous | board.cpp |
+| 3 | Normale (Box-Muller) | mu=0 ou 1, sigma=0.07 | Couleur des pieces (niveaux de gris) | chess_renderer.cpp |
+| 4 | Erlang/Gamma | k=2 | Duree de fatigue (1-4 tours) | chess_controller.cpp |
+| 5 | Bernoulli | p=0.55 (roi), p variable (expansion) | Roi nerveux, expansion du plateau | chess_controller.cpp |
+| 6 | Geometrique | p=0.05 | Tours jumelles (esperance 20 tours) | chess_controller.cpp |
+| 7 | Exponentielle | lambda=0.03 | Skibidi Meteor, proba croissante avec le temps | chess_controller.cpp |
+| 8 | Binomiale | n=3, p=0.4 | Boucliers Sigma gagnes apres capture (0-3) | chess_controller.cpp |
