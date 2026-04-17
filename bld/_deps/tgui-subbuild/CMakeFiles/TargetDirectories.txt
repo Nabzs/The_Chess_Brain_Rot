@@ -1,0 +1,3 @@
+C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/tgui-subbuild/CMakeFiles/tgui-populate.dir
+C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/tgui-subbuild/CMakeFiles/edit_cache.dir
+C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/tgui-subbuild/CMakeFiles/rebuild_cache.dir

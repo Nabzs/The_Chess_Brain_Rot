@@ -1,0 +1,21 @@
+# ninja log v6
+4	129	7979843302898431	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	80e48d7b86faf358
+4	129	7979843302898431	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	80e48d7b86faf358
+130	10249	7979843404106728	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	8f857057bf7fd140
+130	10249	7979843404106728	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	8f857057bf7fd140
+10256	10456	7979843404285000	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	5b53c5b93b48e516
+10256	10456	7979843404285000	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	5b53c5b93b48e516
+10456	10573	7979843407362944	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	285c5031d6cfac09
+10456	10573	7979843407362944	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	285c5031d6cfac09
+10573	10683	7979843408472987	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	7dad362a7b7c9a71
+10573	10683	7979843408472987	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	7dad362a7b7c9a71
+10684	10809	7979843409727474	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	a0dd5d5ea741366
+10684	10809	7979843409727474	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	a0dd5d5ea741366
+10810	10919	7979843410823048	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	50a84f369cf88ccd
+10810	10919	7979843410823048	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	50a84f369cf88ccd
+10919	11030	7979843411935198	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	2d1bdab776dc3ea8
+10919	11030	7979843411935198	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	2d1bdab776dc3ea8
+11030	11195	7979843413440340	CMakeFiles/sfml-populate-complete	c141525f0e8974ec
+11030	11195	7979843413440340	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	c141525f0e8974ec
+11030	11195	7979843413440340	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete	c141525f0e8974ec
+11030	11195	7979843413440340	C:/Users/Nabil/Desktop/chess/Chess-projet-main/Chess-projet-main/proba/bld/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	c141525f0e8974ec
